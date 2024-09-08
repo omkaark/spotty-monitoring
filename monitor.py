@@ -1,8 +1,5 @@
 import docker
-import time
-import json
-from flask import Flask, jsonify, Response, stream_with_context
-from datetime import datetime
+from flask import Flask, jsonify
 
 app = Flask(__name__)
 client = docker.from_env()
@@ -50,7 +47,7 @@ def tasks():
     containers = client.containers.list()
     return jsonify({
         "total_containers": len(containers),
-        "container_names": [container.name for container in containers]
+        "container_list": [{"name": container.name, "id": container.id} for container in containers]
     })
 
 if __name__ == '__main__':

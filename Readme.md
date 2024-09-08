@@ -1,6 +1,10 @@
+<p align="center">
+  <img src="https://i.ibb.co/qDvxTGY/sidecar.png" height="150" alt="Spotty Sidecar" />
+</p>
+
 # Spotty Monitoring
 
-Spotty Monitoring is a lightweight, Python-based container monitoring solution designed to work with the Spotty Container Orchestrator (my k8s dupe only for spot containers). It provides real-time statistics (and soon logs) for Docker containers running on EC2 instances.
+Spotty Monitoring is a lightweight, Python-based sidecar container designed to monitor standalone containers and also containers in the Spotty Container Orchestrator (my k8s dupe only for spot containers). It provides real-time statistics (and soon logs) for Docker containers running on EC2 instances.
 
 ## Features
 
@@ -11,27 +15,13 @@ Spotty Monitoring is a lightweight, Python-based container monitoring solution d
 ## Prerequisites
 
 - Docker
-- Python 3.8+
-- pip
 
 ## Installation
 
-1. Clone the repository:
+1. Pull the image:
 
    ```
-   git clone https://github.com/your-username/spotty-monitoring.git
-   cd spotty-monitoring
-   ```
-
-2. Install the required Python packages:
-
-   ```
-   pip install -r requirements.txt
-   ```
-
-3. Build the Docker image:
-   ```
-   docker build -t spotty-monitoring:latest .
+   docker pull omkaark/spotty-monitoring:latest
    ```
 
 ## Usage
@@ -44,18 +34,18 @@ To run Spotty Monitoring as a standalone container:
 docker run -d --name monitor-container \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -p 3928:3928 \
-    spotty-monitoring:latest
+    omkaark/spotty-monitoring:latest
 ```
 
-### Running alongside a main container
+### Running as a sidecar (recommended)
 
-To monitor a specific container (named 'main-container' using --name):
+To monitor a container (remember to name it 'main-container' using --name):
 
 ```bash
 docker run -d --name monitor-container \
     --network container:main-container \
     -v /var/run/docker.sock:/var/run/docker.sock \
-    spotty-monitoring:latest
+    omkaark/spotty-monitoring:latest
 ```
 
 ### Accessing the monitoring interface
