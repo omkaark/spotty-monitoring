@@ -49,7 +49,7 @@ docker run -d --name monitor-container \
 
 ### Running alongside a main container
 
-To monitor a specific container (named 'main-container'):
+To monitor a specific container (named 'main-container' using --name):
 
 ```bash
 docker run -d --name monitor-container \
@@ -73,6 +73,8 @@ http://localhost:3928
 - `/tasks`: List all running containers
 
 ## Development
+
+Ensure there is a container in your environment named 'main-container'.
 
 To run the application in development mode:
 
