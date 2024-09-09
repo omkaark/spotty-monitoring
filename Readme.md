@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://i.ibb.co/2jTm04k/Screenshot-2024-09-07-at-10-27-40.png" height="150" alt="Spotty" />
+  <img src="https://github.com/omkaark/spotty-monitoring/blob/main/static/sidecar.png" height="150" alt="Spotty Sidecar" />
 </p>
 
 # Spotty Monitoring
